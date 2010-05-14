@@ -165,6 +165,11 @@ module FlagShihTzu
     set_flags(self.flags(colmn) & ~self.class.flag_mapping[colmn][flag], colmn)
   end
 
+  def toggle_flag(flag, colmn = nil)
+    enable = block_given? ? yield : flag_disabled?(flag, colmn)
+    enable ? enable_flag(flag, colmn) : disable_flag(flag, colmn)
+  end
+
   def flag_enabled?(flag, colmn = nil)
     colmn = determine_flag_colmn_for(flag) if colmn.nil?
     self.class.check_flag(flag, colmn)

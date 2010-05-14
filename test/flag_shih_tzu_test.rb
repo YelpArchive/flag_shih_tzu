@@ -316,6 +316,21 @@ class FlagShihTzuInstanceMethodsTest < Test::Unit::TestCase
     end
   end
 
+  def test_should_toggle_flags_correctly
+    @spaceship.enable_flag(:warpdrive)
+    assert @spaceship.flag_enabled?(:warpdrive)
+    
+    @spaceship.toggle_flag(:warpdrive)
+    assert @spaceship.flag_disabled?(:warpdrive)
+    @spaceship.toggle_flag(:warpdrive)
+    assert @spaceship.flag_enabled?(:warpdrive)
+    
+    @spaceship.toggle_flag(:warpdrive) { 1 == 1 }
+    assert @spaceship.flag_enabled?(:warpdrive)
+    @spaceship.toggle_flag(:warpdrive) { 1 != 1 }
+    assert @spaceship.flag_disabled?(:warpdrive)
+  end
+  
   def test_should_define_an_attribute_reader_method
     assert_equal false, @spaceship.warpdrive
   end
