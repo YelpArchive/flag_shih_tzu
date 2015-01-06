@@ -1,3 +1,5 @@
+<b>NOTE: THIS REPO HAS BEEN DEPRECATED</b>
+
 =FlagShihTzu
 
 A rails plugin to store a collection of boolean attributes in a single
